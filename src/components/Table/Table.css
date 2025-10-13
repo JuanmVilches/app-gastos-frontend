@@ -1,0 +1,44 @@
+.main-table {
+  border-collapse: collapse;
+  width: 800px;
+}
+
+.table-wrapper {
+  overflow-y: auto;
+  max-height: 80dvh;
+  padding: 16px;
+}
+
+tbody {
+  tr:nth-child(even) {
+    background-color: pink;
+  }
+}
+
+td {
+  padding: 16px;
+  text-align: center;
+  border: 1px black solid;
+}
+
+tfoot td {
+  text-align: right;
+}
+
+thead th {
+  padding: 8px;
+  background-color: deeppink;
+  color: white;
+  border: 1px solid black;
+}
+
+.filter-price-container {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+}
+
+/* .filter-price {
+  display: flex;
+} */
