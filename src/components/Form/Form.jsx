@@ -1,5 +1,7 @@
+import axios from "axios";
 import "./Form.css";
 import { useForm } from "react-hook-form";
+const API = import.meta.env.VITE_API_URL;
 
 export default function Form({ gasto, setGasto }) {
   const {
@@ -9,20 +11,28 @@ export default function Form({ gasto, setGasto }) {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = handleSubmit((data) => {
-    setGasto([...gasto, data]);
-    reset();
+  const onSubmit = handleSubmit(async (data) => {
+    console.log(data);
+    try {
+      await axios.post(`${API}/gastos`, data);
+      setGasto([...gasto, data]);
+      // reset();
+    } catch (error) {
+      alert("No se pudo cargar la información, por favor intentelo de nuevo.");
+      console.log(error);
+      reset();
+    }
   });
 
   return (
     <>
       <form className="main-form" onSubmit={onSubmit}>
         <div className="input-group">
-          <label htmlFor="compra">Compra</label>
+          <label htmlFor="gasto">Compra</label>
           <input
             type="text"
-            id="compra"
-            {...register("compra", {
+            id="gasto"
+            {...register("gasto", {
               required: {
                 value: true,
                 message: "Debe indicar un nombre",
@@ -69,7 +79,7 @@ export default function Form({ gasto, setGasto }) {
             <option value="Supermercado">Supermercado</option>
             <option value="Ropa">Ropa</option>
             <option value="Regalos">Regalos</option>
-            <option value="Salidas">Salidas</option>
+            <option value="Transporte">Transporte</option>
             <option value="Tarjeta">Tarjeta</option>
             <option value="Otros">Otros</option>
           </select>
@@ -89,7 +99,9 @@ export default function Form({ gasto, setGasto }) {
           />
           {errors.fecha && <span>{errors.fecha.message}</span>}
         </div>
-        <button className="form-button">Enviar</button>
+        <button type="submit" className="form-button">
+          Enviar
+        </button>
       </form>
     </>
   );

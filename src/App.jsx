@@ -3,10 +3,9 @@ import Form from "./components/Form/Form.jsx";
 import Table from "./components/Table/Table.jsx";
 import "./App.css";
 import Filters from "./components/Filters/Filters.jsx";
-import "./array.js";
-import arrayGastos from "./array.js";
+// import arrayGastos from "./array.js";
 export default function App() {
-  const [gasto, setGasto] = useState(arrayGastos);
+  const [gasto, setGasto] = useState([]);
 
   const [value, setValue] = useState(0);
   const [category, setCategory] = useState("");
@@ -16,7 +15,6 @@ export default function App() {
       (category ? item.categoria === category : true) &&
       (value ? item.precio <= value : true)
   );
-  console.log(gastosFiltrados);
 
   return (
     <>

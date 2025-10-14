@@ -2,29 +2,30 @@ import { useEffect } from "react";
 import "./Table.css";
 import axios from "axios";
 const API = import.meta.env.VITE_API_URL;
+import formatDate from "../../../utils/formatDate";
 
 export default function Table({ setGasto, gastosFiltrados }) {
   useEffect(() => {
-    async function getGastos() {
-      try {
-        const response = await axios.get(`${API}/gastos`);
-        setGasto(response.data.gastos);
-      } catch (error) {
-        console.log(error);
-      }
-    }
     getGastos();
-  }, [setGasto]);
+  }, []);
 
-  function formatDate(fecha) {
-    const fechita = fecha.split("-");
-    return `${fechita[2]}-${fechita[1]}-${fechita[0]}`;
+  async function getGastos() {
+    try {
+      const response = await axios.get(`${API}/gastos`);
+      setGasto(response.data.gastos);
+    } catch (error) {
+      console.log(error);
+    }
   }
-
-  function deleteItem(item) {
-    const sure = confirm("are you sure?");
-    if (sure) {
-      setGasto((prev) => prev.filter((_, i) => i !== item));
+  async function deleteItem(id) {
+    try {
+      const confirmacion = confirm("Confime");
+      if (confirmacion) {
+        await axios.delete(`${API}/gastos/${id}`);
+        getGastos();
+      }
+    } catch (error) {
+      console.log(error);
     }
   }
 
@@ -56,7 +57,7 @@ export default function Table({ setGasto, gastosFiltrados }) {
           <tbody>
             {gastosFiltrados.map((item, index) => {
               return (
-                <tr id={index}>
+                <tr id={index} key={item._id}>
                   <td>{item.gasto}</td>
                   <td>${item.precio}</td>
                   <td>{item.categoria}</td>
@@ -64,7 +65,7 @@ export default function Table({ setGasto, gastosFiltrados }) {
                   <td>
                     <div className="action-buttons">
                       <button onClick={() => editItem(index)}>✏️</button>
-                      <button onClick={() => deleteItem(index)}>🗑️</button>
+                      <button onClick={() => deleteItem(item._id)}>🗑️</button>
                     </div>
                   </td>
                 </tr>

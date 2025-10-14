@@ -1,6 +1,7 @@
 .main-table {
   border-collapse: collapse;
   width: 800px;
+  min-height: 400px;
 }
 
 .table-wrapper {
@@ -11,6 +12,7 @@
 
 tbody {
   color: white;
+  background-color: #66758a;
   tr:nth-child(even) {
     background-color: #334155;
   }

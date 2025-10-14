@@ -15,6 +15,10 @@
     background-color: #334155;
     color: white;
   }
+
+  span {
+    color: #9eb5d6;
+  }
 }
 
 .input-container {

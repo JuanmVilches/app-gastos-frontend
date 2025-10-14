@@ -9,7 +9,7 @@ export default function Filters({ value, setValue, setCategory }) {
           <input
             type="range"
             min={0}
-            max={3000}
+            max={500000}
             value={value}
             onChange={(e) => setValue(Number(e.target.value))}
           />
@@ -17,10 +17,11 @@ export default function Filters({ value, setValue, setCategory }) {
         </div>
 
         <select name="" id="" onChange={(e) => setCategory(e.target.value)}>
-          <option value=""></option>
+          <option value="">Todos</option>
           <option value="Supermercado">Supermercado</option>
           <option value="Ropa">Ropa</option>
           <option value="Regalos">Regalos</option>
+          <option value="Transporte">Transporte</option>
           <option value="Tarjeta">Tarjeta</option>
           <option value="Otros">Otros</option>
         </select>
