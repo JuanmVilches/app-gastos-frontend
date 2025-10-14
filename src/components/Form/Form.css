@@ -1,24 +1,49 @@
 .input-group {
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
   margin-bottom: 8px;
-  padding: 8px;
+  padding: 6px;
 }
 
 .main-form {
-  border: 1px solid crimson;
   padding: 8px;
-  width: 250px;
+  width: 300px;
+  background-color: #334155;
+  color: white;
+  border-radius: 16px;
 }
 
 span {
   color: crimson;
   font-size: 0.75rem;
-  margin-top: 4px;
+  margin-top: 8px;
+  font-size: small;
 }
 
 input,
 select {
   padding: 4px;
+  margin-top: 4px;
+  border-radius: 16px;
+  border: none;
+}
+
+label {
+  margin-top: 0px;
+}
+
+.form-button {
+  padding: 4px;
+  border-radius: 16px;
+  width: 100%;
+  border: none;
+  background-color: #10b981;
+  cursor: pointer;
+  margin: 8px auto;
+  transition: all 0.3s;
+  font-weight: 600;
+  font-size: 16px;
+  &:hover {
+    background-color: #10a171;
+  }
 }

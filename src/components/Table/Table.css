@@ -10,8 +10,9 @@
 }
 
 tbody {
+  color: white;
   tr:nth-child(even) {
-    background-color: pink;
+    background-color: #334155;
   }
 }
 
@@ -23,11 +24,13 @@ td {
 
 tfoot td {
   text-align: right;
+  color: white;
+  background-color: #334155;
 }
 
 thead th {
   padding: 8px;
-  background-color: deeppink;
+  background-color: #1e293b;
   color: white;
   border: 1px solid black;
 }

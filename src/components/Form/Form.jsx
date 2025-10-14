@@ -89,7 +89,7 @@ export default function Form({ gasto, setGasto }) {
           />
           {errors.fecha && <span>{errors.fecha.message}</span>}
         </div>
-        <button>Enviar</button>
+        <button className="form-button">Enviar</button>
       </form>
     </>
   );

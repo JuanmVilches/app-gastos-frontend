@@ -1,5 +1,21 @@
+import { useEffect } from "react";
 import "./Table.css";
+import axios from "axios";
+const API = import.meta.env.VITE_API_URL;
+
 export default function Table({ setGasto, gastosFiltrados }) {
+  useEffect(() => {
+    async function getGastos() {
+      try {
+        const response = await axios.get(`${API}/gastos`);
+        setGasto(response.data.gastos);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getGastos();
+  }, [setGasto]);
+
   function formatDate(fecha) {
     const fechita = fecha.split("-");
     return `${fechita[2]}-${fechita[1]}-${fechita[0]}`;
@@ -41,7 +57,7 @@ export default function Table({ setGasto, gastosFiltrados }) {
             {gastosFiltrados.map((item, index) => {
               return (
                 <tr id={index}>
-                  <td>{item.compra}</td>
+                  <td>{item.gasto}</td>
                   <td>${item.precio}</td>
                   <td>{item.categoria}</td>
                   <td>{formatDate(item.fecha)}</td>
