@@ -16,7 +16,7 @@ export default function Form({ gasto, setGasto }) {
     try {
       await axios.post(`${API}/gastos`, data);
       setGasto([...gasto, data]);
-      // reset();
+      reset();
     } catch (error) {
       alert("No se pudo cargar la información, por favor intentelo de nuevo.");
       console.log(error);
