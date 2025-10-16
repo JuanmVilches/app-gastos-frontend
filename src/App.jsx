@@ -18,7 +18,7 @@ export default function App() {
 
   return (
     <>
-      <main>
+      <main className="main-container">
         <Form gasto={gasto} setGasto={setGasto} value={value} />
         <div className="container">
           <Filters

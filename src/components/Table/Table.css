@@ -1,13 +1,12 @@
 .main-table {
   border-collapse: collapse;
-  width: 800px;
+  min-width: 800px;
   min-height: 400px;
 }
 
 .table-wrapper {
-  overflow-y: auto;
-  max-height: 80dvh;
-  padding: 16px;
+  overflow-x: auto;
+  width: 100%;
 }
 
 tbody {
@@ -43,7 +42,3 @@ thead th {
   align-items: center;
   justify-content: center;
 }
-
-/* .filter-price {
-  display: flex;
-} */
